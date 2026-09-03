@@ -68,15 +68,32 @@
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <Button
-        android:id="@+id/btnIngresar"
+        android:id="@+id/btnLimpiar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Limpiar"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/rojo_limpiar"
+        android:onClick="onLimpiarClick"
+        app:layout_constraintEnd_toStartOf="@+id/btnIngresar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
         android:text="Ingresar"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/azul_ingresar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnLimpiar"
         app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
 
     <ImageView

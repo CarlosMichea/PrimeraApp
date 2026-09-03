@@ -19,22 +19,25 @@ Proyecto de aplicación móvil nativa para Android desarrollado en **Kotlin**, c
 
 ## 📋 Resumen del Trabajo Realizado
 
-### 1. Interfaz de Inicio de Sesión (`activity_main.xml`)
+### 1. Interfaz de Inicio de Sesión (`activity_main.xml` y `colors.xml`)
 * **Banner institucional:** Se incorporó un `ImageView` superior utilizando el recurso `@drawable/inacap_banner` con ajuste de proporciones (`adjustViewBounds="true"`).
 * **Título:** `TextView` estilizado con texto *"Iniciar sesión"*, tamaño de `24sp` y estilo en negrita.
 * **Campos de entrada de datos:**
   * `EditText` (`edtUsuario`) para el nombre de usuario con margen horizontal de `24dp` y ancho adaptable (`0dp`).
   * `EditText` (`edtPassword`) para contraseña con `android:inputType="textPassword"` para enmascaramiento seguro de caracteres.
 * **Casilla de verificación:** `CheckBox` (`chkRecordarme`) con la opción *"Recordarme"*.
-* **Botón de acción:** `Button` (`btnIngresar`) con texto *"Ingresar"* y ancho completo.
-* **Animación GIF:** Se integró un `ImageView` con el recurso animado `@drawable/breakdance.gif` ubicado debajo del botón de inicio de sesión.
+* **Botones de acción (Cadena horizontal):**
+  * **Botón Limpiar (`btnLimpiar`):** Ubicado a la izquierda, color de fondo rojo (`@color/rojo_limpiar`), texto blanco y evento `android:onClick="onLimpiarClick"`.
+  * **Botón Ingresar (`btnIngresar`):** Ubicado a la derecha, color de fondo azul (`@color/azul_ingresar`), texto blanco y ancho simétrico (`0dp`).
+* **Animación GIF:** Se integró un `ImageView` con el recurso animado `@drawable/breakdance.gif` ubicado debajo de los botones de acción.
 
 ---
 
-### 2. Lógica de Navegación y Validación (`MainActivity.kt`)
+### 2. Lógica de Navegación, Validación y Limpieza (`MainActivity.kt`)
 * **Validación de campos:** Al pulsar `btnIngresar`, se validan las entradas de usuario y contraseña:
   * Si alguno está vacío, se muestra una notificación `Toast` con el mensaje: *"Completa usuario y contraseña"*.
 * **Navegación con `Intent` y paso de parámetros:** Cuando los campos son válidos, se inicia la actividad `BienvenidaActivity` enviando el nombre de usuario a través de un extra (`putExtra("usuario", usuario)`).
+* **Limpieza de formulario (`onLimpiarClick`):** Método que atiende el clic del botón Limpiar para reiniciar los campos `edtUsuario`, `edtPassword` y desmarcar `chkRecordarme`, con código comentado detalladamente línea a línea.
 * **Animación de GIF en Android 9+ (API 28+):** Implementación de `ImageDecoder` y `AnimatedImageDrawable` para decodificar y reproducir en bucle la animación del estudiante bailando breakdance.
 
 ---

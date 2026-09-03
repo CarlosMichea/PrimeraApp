@@ -5,6 +5,7 @@ import android.graphics.ImageDecoder
 import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -60,5 +61,21 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    // Método que se ejecuta al presionar el botón Limpiar desde el layout XML (android:onClick)
+    fun onLimpiarClick(view: View) {
+        // Obtiene la referencia del campo de texto de usuario por su ID
+        val edtUsuario = findViewById<EditText>(R.id.edtUsuario)
+        // Obtiene la referencia del campo de texto de contraseña por su ID
+        val edtPassword = findViewById<EditText>(R.id.edtPassword)
+        // Obtiene la referencia de la casilla de verificación Recordarme por su ID
+        val chkRecordarme = findViewById<CheckBox>(R.id.chkRecordarme)
+        // Limpia el contenido del campo de texto de usuario
+        edtUsuario.setText("")
+        // Limpia el contenido del campo de texto de contraseña
+        edtPassword.setText("")
+        // Desmarca la casilla de verificación estableciendo su estado en falso
+        chkRecordarme.isChecked = false
     }
 }
