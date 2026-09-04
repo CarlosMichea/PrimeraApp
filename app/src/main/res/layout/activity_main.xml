@@ -19,13 +19,15 @@
         android:background="@drawable/borde_rojo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/imageViewLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_width="368dp"
+            android:layout_height="93dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
@@ -36,109 +38,109 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Iniciar sesión"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Iniciar sesión"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
 
-    <EditText
-        android:id="@+id/edtUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:hint="Usuario"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+        <EditText
+            android:id="@+id/edtUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Usuario"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toStartOf="@+id/btnMostrarPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toStartOf="@+id/btnMostrarPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
 
-    <ImageButton
-        android:id="@+id/btnMostrarPassword"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/ic_visibility_24"
-        android:background="@android:color/transparent"
-        android:onClick="onMostrarPasswordClick"
-        android:contentDescription="Mostrar u ocultar contraseña"
-        app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edtPassword"
-        app:layout_constraintTop_toTopOf="@+id/edtPassword" />
+        <ImageButton
+            android:id="@+id/btnMostrarPassword"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Mostrar u ocultar contraseña"
+            android:onClick="onMostrarPasswordClick"
+            android:src="@drawable/ic_visibility_24"
+            app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edtPassword"
+            app:layout_constraintTop_toTopOf="@+id/edtPassword" />
 
-    <CheckBox
-        android:id="@+id/chkRecordarme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="Recordarme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+        <CheckBox
+            android:id="@+id/chkRecordarme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Recordarme"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
-    <Button
-        android:id="@+id/btnLimpiar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Limpiar"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/rojo_limpiar"
-        android:onClick="onLimpiarClick"
-        app:layout_constraintEnd_toStartOf="@+id/btnIngresar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
+        <Button
+            android:id="@+id/btnLimpiar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="onLimpiarClick"
+            android:text="Limpiar"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/rojo_limpiar"
+            app:layout_constraintEnd_toStartOf="@+id/btnIngresar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
 
-    <Button
-        android:id="@+id/btnIngresar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Ingresar"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/azul_ingresar"
-        android:onClick="onIngresarClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLimpiar"
-        app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="onIngresarClick"
+            android:text="Ingresar"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/azul_ingresar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnLimpiar"
+            app:layout_constraintTop_toBottomOf="@+id/chkRecordarme" />
 
-    <ImageView
-        android:id="@+id/imgBreakdance"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/breakdance"
-        android:contentDescription="Estudiante bailando breakdance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIngresar" />
+        <ImageView
+            android:id="@+id/imgBreakdance"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Estudiante bailando breakdance"
+            android:src="@drawable/breakdance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnIngresar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

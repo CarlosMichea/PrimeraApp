@@ -49,6 +49,38 @@ Proyecto de aplicación móvil nativa para Android desarrollado en **Kotlin**, c
 
 ---
 
-### 4. Control de Versiones y Publicación en GitHub
+### 4. Navegación hacia Preferencias (`BienvenidaActivity.kt` y `activity_bienvenida.xml`)
+* **Botón `btnPreferencias`** agregado en `activity_bienvenida.xml`, posicionado `32dp` debajo de `txtBienvenida`, centrado horizontalmente, con evento `android:onClick="onPreferenciasClick"`.
+* **Propiedad de clase `usuario`:** El campo fue promovido de variable local a propiedad privada de la clase (`private var usuario: String = ""`) para que `onPreferenciasClick` pueda acceder a él.
+* **Método `onPreferenciasClick(view: View)`:** Crea un `Intent` hacia `PreferenciasActivity` y pasa el nombre del usuario como extra (`putExtra("usuario", usuario)`), luego lanza la actividad con `startActivity(intent)`.
+* **Código comentado línea a línea** en todo el archivo.
+
+---
+
+### 5. Pantalla de Preferencias (`PreferenciasActivity.kt` y `activity_preferencias.xml`)
+* **Archivos nuevos creados** para la pantalla de preferencias del usuario.
+* **Diseño (`activity_preferencias.xml`):**
+  * `TextView` (`txtPreferencias`) como título, anclado al tope del padre con margen superior de `32dp`.
+  * `LinearLayout` vertical (`layoutOpciones`), ancho completo (`match_parent`), posicionado `24dp` debajo del título, con `paddingHorizontal="16dp"`.
+  * `Switch` (`swNotificaciones`) dentro del `LinearLayout`, con texto *"Recibir notificaciones"* y ancho completo.
+  * Cada línea del XML está comentada con su propósito.
+* **Lógica (`PreferenciasActivity.kt`):** Recupera el extra `"usuario"` enviado desde `BienvenidaActivity` y personaliza el mensaje del `TextView` (`Preferencias de <usuario>`).
+* **Registro en Manifiesto:** Declaración de `PreferenciasActivity` en `AndroidManifest.xml` con `android:exported="false"`.
+
+---
+
+### 6. Flujo de navegación completo
+
+```
+MainActivity
+  └──[credenciales válidas]──→ BienvenidaActivity
+                                  └──[btnPreferencias]──→ PreferenciasActivity
+```
+
+Cada actividad recibe el nombre del usuario como extra de `Intent` y lo muestra en pantalla.
+
+---
+
+### 7. Control de Versiones y Publicación en GitHub
 * Inicialización del repositorio Git local y configuración de exclusiones en `.gitignore`.
 * Publicación del repositorio público en GitHub: [https://github.com/CarlosMichea/PrimeraApp](https://github.com/CarlosMichea/PrimeraApp).
