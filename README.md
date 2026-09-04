@@ -57,30 +57,66 @@ Proyecto de aplicación móvil nativa para Android desarrollado en **Kotlin**, c
 
 ---
 
-### 5. Pantalla de Preferencias (`PreferenciasActivity.kt` y `activity_preferencias.xml`)
+### 5. Pantalla de Preferencias — estructura base (`PreferenciasActivity.kt` y `activity_preferencias.xml`)
 * **Archivos nuevos creados** para la pantalla de preferencias del usuario.
 * **Diseño (`activity_preferencias.xml`):**
   * `TextView` (`txtPreferencias`) como título, anclado al tope del padre con margen superior de `32dp`.
   * `LinearLayout` vertical (`layoutOpciones`), ancho completo (`match_parent`), posicionado `24dp` debajo del título, con `paddingHorizontal="16dp"`.
   * `Switch` (`swNotificaciones`) dentro del `LinearLayout`, con texto *"Recibir notificaciones"* y ancho completo.
-  * Cada línea del XML está comentada con su propósito.
+  * Cada línea del XML está comentada con su propósito (en bloques `<!-- -->` fuera de las etiquetas).
 * **Lógica (`PreferenciasActivity.kt`):** Recupera el extra `"usuario"` enviado desde `BienvenidaActivity` y personaliza el mensaje del `TextView` (`Preferencias de <usuario>`).
 * **Registro en Manifiesto:** Declaración de `PreferenciasActivity` en `AndroidManifest.xml` con `android:exported="false"`.
 
 ---
 
-### 6. Flujo de navegación completo
+### 6. Selector de idioma con Spinner (`strings.xml` y `activity_preferencias.xml`)
+* **`strings.xml`:** Se añadió un `string-array` llamado `idiomas` con dos ítems: `Español` e `Inglés`, comentado línea a línea.
+* **`activity_preferencias.xml`:** Se agregó un `Spinner` (`spIdioma`) dentro del `LinearLayout`, con `android:entries="@array/idiomas"` para cargar las opciones directamente desde XML sin necesidad de `ArrayAdapter` en Kotlin.
+
+---
+
+### 7. Selección de unidad de temperatura con RadioGroup (`activity_preferencias.xml`)
+* **`RadioGroup`** (`rgUnidad`, orientación vertical) agregado dentro del `LinearLayout`, debajo del `Spinner`.
+* Contiene dos **`RadioButton`**:
+  * `rbCelsius` — texto *"Celsius"*, marcado por defecto (`android:checked="true"`).
+  * `rbFahrenheit` — texto *"Fahrenheit"*, desmarcado por defecto.
+* El `RadioGroup` garantiza selección mutuamente excluyente: marcar uno desmarca el otro automáticamente.
+
+---
+
+### 8. Guardado con ProgressBar y Toast (`activity_preferencias.xml` y `PreferenciasActivity.kt`)
+* **`ProgressBar`** (`pbGuardando`) circular pequeño (`style="?android:attr/progressBarStyleSmall"`), inicialmente oculto (`android:visibility="gone"`), centrado horizontalmente con `layout_gravity`.
+* **`Button`** (`btnGuardarPreferencia`), texto *"Guardar"*, con evento `android:onClick="onGuardarPreferenciaClick"`.
+* **Método `onGuardarPreferenciaClick(view: View)` en `PreferenciasActivity.kt`:**
+  1. Hace visible el `ProgressBar` (`View.VISIBLE`).
+  2. Usa `Handler(Looper.getMainLooper()).postDelayed({ ... }, 1000)` para ejecutar tras 1 segundo en el hilo principal.
+  3. Dentro del bloque: oculta el `ProgressBar` (`View.GONE`), lee el `RadioButton` seleccionado con `rgUnidad.checkedRadioButtonId` y muestra un `Toast` con la unidad elegida.
+
+---
+
+### 9. Cierre de sesión (`activity_preferencias.xml` y `PreferenciasActivity.kt`)
+* **`Button`** (`btnCerrarSesion`), texto *"Cerrar sesión"*, con evento `android:onClick="onCerrarSesionClick"`, agregado debajo del botón Guardar.
+* **Método `onCerrarSesionClick(view: View)` en `PreferenciasActivity.kt`:**
+  * Crea un `Intent` hacia `MainActivity`.
+  * Aplica los flags `FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK` para destruir todo el back stack y dejar el login como pantalla raíz única.
+  * El usuario **no puede volver atrás** con el botón Back tras cerrar sesión.
+
+---
+
+### 10. Flujo de navegación completo
 
 ```
-MainActivity
+MainActivity (login)
   └──[credenciales válidas]──→ BienvenidaActivity
-                                  └──[btnPreferencias]──→ PreferenciasActivity
+                                   └──[btnPreferencias]──→ PreferenciasActivity
+                                                               ├── [btnGuardarPreferencia] → ProgressBar 1s → Toast
+                                                               └── [btnCerrarSesion] ──→ MainActivity (back stack limpio)
 ```
 
 Cada actividad recibe el nombre del usuario como extra de `Intent` y lo muestra en pantalla.
 
 ---
 
-### 7. Control de Versiones y Publicación en GitHub
+### 11. Control de Versiones y Publicación en GitHub
 * Inicialización del repositorio Git local y configuración de exclusiones en `.gitignore`.
 * Publicación del repositorio público en GitHub: [https://github.com/CarlosMichea/PrimeraApp](https://github.com/CarlosMichea/PrimeraApp).

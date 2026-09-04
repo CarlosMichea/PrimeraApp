@@ -40,6 +40,129 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Recibir notificaciones" />
+        <!--
+            swNotificaciones:
+            - layout_width="match_parent"  → ocupa todo el ancho disponible del LinearLayout
+            - layout_height="wrap_content" → alto ajustado al contenido del widget
+            - text                         → etiqueta visible junto al switch
+        -->
+
+        <!-- Spinner que muestra la lista de idiomas definida en res/values/strings.xml -->
+        <Spinner
+            android:id="@+id/spIdioma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:entries="@array/idiomas" />
+        <!--
+            spIdioma:
+            - layout_width="match_parent"      → ocupa todo el ancho disponible del LinearLayout
+            - layout_height="wrap_content"     → alto ajustado al contenido del widget
+            - layout_marginTop="12dp"          → margen superior para separarlo visualmente del Switch
+            - entries="@array/idiomas"         → enlaza el Spinner al string-array "idiomas" de strings.xml
+        -->
+
+        <!-- RadioGroup que agrupa las opciones de unidad de temperatura (solo una seleccionable a la vez) -->
+        <RadioGroup
+            android:id="@+id/rgUnidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+        <!--
+            rgUnidad:
+            - id="rgUnidad"                → identificador para referenciarlo desde Kotlin
+            - layout_width="match_parent"  → ocupa todo el ancho disponible del LinearLayout
+            - layout_height="wrap_content" → alto ajustado a la suma de sus RadioButton hijos
+            - layout_marginTop="12dp"      → margen superior para separarlo visualmente del Spinner
+            - orientation="vertical"       → apila los RadioButton uno debajo del otro
+        -->
+
+            <!-- RadioButton para seleccionar grados Celsius, marcado por defecto -->
+            <RadioButton
+                android:id="@+id/rbCelsius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Celsius" />
+            <!--
+                rbCelsius:
+                - id="rbCelsius"               → identificador para referenciarlo desde Kotlin
+                - layout_width="wrap_content"  → ancho ajustado al texto y al círculo del radio
+                - layout_height="wrap_content" → alto ajustado al contenido
+                - checked="true"               → esta opción aparece seleccionada al abrir la pantalla
+                - text="Celsius"               → etiqueta visible del botón de radio
+            -->
+
+            <!-- RadioButton para seleccionar grados Fahrenheit -->
+            <RadioButton
+                android:id="@+id/rbFahrenheit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Fahrenheit" />
+            <!--
+                rbFahrenheit:
+                - id="rbFahrenheit"            → identificador para referenciarlo desde Kotlin
+                - layout_width="wrap_content"  → ancho ajustado al texto y al círculo del radio
+                - layout_height="wrap_content" → alto ajustado al contenido
+                - checked="false"              → esta opción aparece deseleccionada por defecto
+                - text="Fahrenheit"            → etiqueta visible del botón de radio
+            -->
+
+        </RadioGroup>
+
+        <!-- ProgressBar circular pequeño que se muestra mientras se simulan guardar las preferencias -->
+        <ProgressBar
+            android:id="@+id/pbGuardando"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+        <!--
+            pbGuardando:
+            - style="?android:attr/progressBarStyleSmall" → usa el estilo de barra circular pequeña del sistema
+            - layout_width / layout_height="wrap_content" → tamaño ajustado al propio widget
+            - layout_gravity="center_horizontal"          → centra el spinner dentro del LinearLayout
+            - layout_marginTop="16dp"                     → separa el ProgressBar del RadioGroup
+            - visibility="gone"                           → oculto al inicio; no ocupa espacio en el layout
+        -->
+
+        <!-- Botón que dispara el guardado de preferencias y la animación del ProgressBar -->
+        <Button
+            android:id="@+id/btnGuardarPreferencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="onGuardarPreferenciaClick"
+            android:text="Guardar" />
+        <!--
+            btnGuardarPreferencia:
+            - layout_width="match_parent"          → ocupa todo el ancho disponible del LinearLayout
+            - layout_height="wrap_content"         → alto ajustado al texto del botón
+            - layout_marginTop="16dp"              → separa el botón del ProgressBar
+            - onClick="onGuardarPreferenciaClick"  → llama al método homónimo en PreferenciasActivity.kt
+            - text="Guardar"                       → etiqueta visible del botón
+        -->
+
+        <!-- Botón que cierra la sesión del usuario y vuelve directamente a la pantalla de login -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="onCerrarSesionClick"
+            android:text="Cerrar sesión" />
+        <!--
+            btnCerrarSesion:
+            - layout_width="match_parent"    → ocupa todo el ancho disponible del LinearLayout
+            - layout_height="wrap_content"   → alto ajustado al texto del botón
+            - layout_marginTop="8dp"         → margen reducido respecto al botón Guardar (acción secundaria)
+            - onClick="onCerrarSesionClick"  → llama al método homónimo en PreferenciasActivity.kt
+            - text="Cerrar sesión"           → etiqueta visible del botón
+        -->
 
     </LinearLayout>
 

@@ -1,3 +1,12 @@
 <resources>
+    <!-- Nombre de la aplicación mostrado en el lanzador y barra de título -->
     <string name="app_name">Primera App</string>
+
+    <!-- Array de cadenas con los idiomas disponibles para el Spinner de Preferencias -->
+    <string-array name="idiomas">
+        <!-- Opción 1: idioma español -->
+        <item>Español</item>
+        <!-- Opción 2: idioma inglés -->
+        <item>Inglés</item>
+    </string-array>
 </resources>
